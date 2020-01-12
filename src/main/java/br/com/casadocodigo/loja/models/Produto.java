@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.models;
 
+@Entity
 public class Produto {
 	
 	private String titulo;
