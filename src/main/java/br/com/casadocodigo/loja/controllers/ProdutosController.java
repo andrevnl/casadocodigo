@@ -7,26 +7,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.casadocodigo.loja.daos.ProdutoDAO;
 import br.com.casadocodigo.loja.models.Produto;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
+@RequestMapping("produtos")
 public class ProdutosController {
 
 	@Autowired
 	private ProdutoDAO produtoDAO;
 
-	@RequestMapping("/produtos/form")
+	@RequestMapping("form")
 	public ModelAndView form() {
 		ModelAndView modelAndView = new ModelAndView("produtos/form");
 		modelAndView.addObject("tipos",TipoPreco.values());
 		return modelAndView;
 	}
 	
-	@RequestMapping("/produtos")
-	public String gravar(Produto produto) {
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView gravar(Produto produto, RedirectAttributes redirectAttributes) {
 		System.out.println(produto);
 		produtoDAO.gravar(produto);
-		return "produtos/ok";
+		redirectAttributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso!");
+		return new ModelAndView("redirect:produtos");
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView listar() {
+		List<Produto> produtos = produtoDAO.listar();
+		ModelAndView modelAndView = new ModelAndView("produtos/lista");
+		modelAndView.addObject("produtos", produtos);
+		return modelAndView;
 	}
 	
 }
