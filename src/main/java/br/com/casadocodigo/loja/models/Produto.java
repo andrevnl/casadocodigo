@@ -11,19 +11,19 @@ import java.util.List;
 public class Produto {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String titulo;
 	private String descricao;
-	private int paginas;
+	private Integer paginas;
 
 	@ElementCollection
 	private List<Preco> precos;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -39,10 +39,12 @@ public class Produto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public int getPaginas() {
+
+	public Integer getPaginas() {
 		return paginas;
 	}
-	public void setPaginas(int paginas) {
+
+	public void setPaginas(Integer paginas) {
 		this.paginas = paginas;
 	}
 
