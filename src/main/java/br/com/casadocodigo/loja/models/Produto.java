@@ -14,7 +14,7 @@ public class Produto {
 	private Integer id;
 	private String titulo;
 	private String descricao;
-	private Integer paginas;
+	private int paginas;
 
 	@ElementCollection
 	private List<Preco> precos;
@@ -40,11 +40,11 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public Integer getPaginas() {
+	public int getPaginas() {
 		return paginas;
 	}
 
-	public void setPaginas(Integer paginas) {
+	public void setPaginas(int paginas) {
 		this.paginas = paginas;
 	}
 
