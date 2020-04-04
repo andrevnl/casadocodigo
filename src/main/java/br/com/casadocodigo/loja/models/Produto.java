@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import java.util.Calendar;
 import java.util.List;
 
@@ -16,13 +17,14 @@ public class Produto {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String titulo;
+	@Lob
 	private String descricao;
 	private int paginas;
 	@DateTimeFormat
 	private Calendar dataLancamento;
-
 	@ElementCollection
 	private List<Preco> precos;
+	private String sumarioPath;
 
 	public Integer getId() {
 		return id;
@@ -67,6 +69,14 @@ public class Produto {
 
 	public void setDataLancamento(Calendar dataLancamento) {
 		this.dataLancamento = dataLancamento;
+	}
+
+	public String getSumarioPath() {
+		return sumarioPath;
+	}
+
+	public void setSumarioPath(String sumarioPath) {
+		this.sumarioPath = sumarioPath;
 	}
 
 	@Override
