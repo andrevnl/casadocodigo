@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -97,4 +98,9 @@ public class Produto {
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
+    public BigDecimal precoPara(TipoPreco tipoPreco) {
+		return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco))
+				.findFirst().get().getValor();
+    }
 }
