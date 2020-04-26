@@ -3,9 +3,11 @@ package br.com.casadocodigo.loja.conf;
 import br.com.casadocodigo.loja.daos.ProdutoDAO;
 import br.com.casadocodigo.loja.infra.FileSaver;
 import br.com.casadocodigo.loja.models.CarrinhoCompras;
+import com.google.common.cache.CacheBuilder;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
+import org.springframework.cache.guava.GuavaCacheManager;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,6 +25,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.casadocodigo.loja.controllers.HomeController;
+
+import java.util.concurrent.TimeUnit;
 
 @EnableWebMvc
 @ComponentScan(basePackageClasses = {HomeController.class, ProdutoDAO.class, FileSaver.class, CarrinhoCompras.class})
@@ -73,6 +77,11 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public CacheManager cacheManager() {
-		return new ConcurrentMapCacheManager();
+		CacheBuilder<Object, Object> builder = CacheBuilder.newBuilder()
+				.maximumSize(100)
+				.expireAfterAccess(5, TimeUnit.MINUTES);
+		GuavaCacheManager guavaCacheManager = new GuavaCacheManager();
+		guavaCacheManager.setCacheBuilder(builder);
+		return guavaCacheManager;
 	}
 }
