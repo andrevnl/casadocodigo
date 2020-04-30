@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.casadocodigo.loja.daos.ProdutoDAO;
 import br.com.casadocodigo.loja.models.Produto;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -75,5 +76,5 @@ public class ProdutosController {
 		modelAndView.addObject("produto", produto);
 		return modelAndView;
 	}
-	
+
 }
