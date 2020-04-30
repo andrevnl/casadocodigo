@@ -8,6 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Livros de Java, Android, iPhone, Ruby, PHP e muito mais</title>
+	<c:url value="/resources/css" var="cssPath" />
+	<link rel="stylesheet" href="${cssPath}/bootstrap.min.css">
+	<link rel="stylesheet" href="${cssPath}/bootstrap-theme.min.css">
 </head>
 <body>
 	<form:form action="${s:mvcUrl('PC#gravar').build()}" method="POST" commandName="produto" enctype="multipart/form-data">
