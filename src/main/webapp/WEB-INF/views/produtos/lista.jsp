@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,6 +49,18 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="${s:mvcUrl('PC#form').build()}">Cadastro de Produtos</a>
+        </div>
+        <div class="navbar-header">
+            <button type="button" class="nav navbar-nav navbar-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="#">
+                <security:authentication property="principal" var="usuario"></security:authentication>
+                Usuário: ${usuario.username}
+            </a>
         </div>
     </div>
 </nav>
