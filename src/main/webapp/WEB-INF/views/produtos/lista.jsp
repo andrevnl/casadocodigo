@@ -61,6 +61,9 @@
                 <security:authentication property="principal" var="usuario"></security:authentication>
                 Usuário: ${usuario.username}
             </a>
+            <li class="nav-item">
+                <a href="<c:url value="/logout" />">Sair</a></span>
+            </li>
         </div>
     </div>
 </nav>
