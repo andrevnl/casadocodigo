@@ -28,8 +28,6 @@ public class ProdutoDAOTest {
     @Test
     @Transactional
     public void deveSomarTodosPrecosPorTipoLivro() {
-        produtoDAO = new ProdutoDAO();
-
         List<Produto> livrosImpressos = ProdutoBuilder.newProduto(TipoPreco.IMPRESSO, BigDecimal.TEN)
                 .more(3).buildAll();
 
