@@ -24,4 +24,12 @@ public class Preco {
     public void setTipo(TipoPreco tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    public String toString() {
+        return "Preco{" +
+                "valor=" + valor +
+                ", tipo=" + tipo +
+                '}';
+    }
 }
