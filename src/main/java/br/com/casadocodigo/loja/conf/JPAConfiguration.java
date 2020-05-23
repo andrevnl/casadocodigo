@@ -33,7 +33,7 @@ public class JPAConfiguration {
 
     @Bean
     @Profile("dev")
-    public Properties aditionalProperties() {
+    public Properties additionalProperties() {
         Properties props = new Properties();
         props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         props.setProperty("hibernate.show_sql", "true");
