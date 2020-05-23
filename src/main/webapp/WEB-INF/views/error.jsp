@@ -8,12 +8,12 @@
 
         <h2>Erro generico acontecendo!</h2>
 
-            <%--
+            <!--
             	Mensagem: ${exception.message}
             	<c:forEach items="${exception.stackTrace}" var="stk">
                 	${stk}
             	</c:forEach>
-            --%>
+            -->
 
     </section>
 
